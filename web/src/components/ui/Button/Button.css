@@ -1,0 +1,114 @@
+.hireiq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.hireiq-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.hireiq-btn--primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+.hireiq-btn--primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--primary-lt);
+}
+
+.hireiq-btn--success {
+  background: var(--success);
+  color: #ffffff;
+}
+.hireiq-btn--success:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--success-lt);
+}
+
+.hireiq-btn--accent {
+  background: var(--accent);
+  color: #ffffff;
+}
+.hireiq-btn--accent:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--accent-lt);
+}
+
+.hireiq-btn--danger {
+  background: var(--danger);
+  color: #ffffff;
+}
+.hireiq-btn--danger:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--danger-lt);
+}
+
+.hireiq-btn--outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+.hireiq-btn--outline:hover:not(:disabled) {
+  background: var(--surface3);
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.hireiq-btn--ghost {
+  background: transparent;
+  color: var(--text2);
+}
+.hireiq-btn--ghost:hover:not(:disabled) {
+  background: var(--surface3);
+  color: var(--text);
+}
+
+/* Sizes */
+.hireiq-btn--xs {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  border-radius: 4px;
+}
+
+.hireiq-btn--sm {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+.hireiq-btn--md {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.88rem;
+}
+
+.hireiq-btn--lg {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Modifiers */
+.hireiq-btn--full-width {
+  width: 100%;
+}
+
+.hireiq-btn__spinner {
+  flex-shrink: 0;
+}
+.hireiq-btn__content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}

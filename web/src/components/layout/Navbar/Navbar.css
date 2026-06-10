@@ -1,0 +1,116 @@
+.hireiq-navbar {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.hireiq-navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hireiq-navbar__brand {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.hireiq-navbar__brand-span {
+  color: var(--header-text);
+}
+
+.hireiq-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hireiq-navbar__link {
+  color: var(--header-text2);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  transition: all var(--transition);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+}
+
+.hireiq-navbar__link:hover {
+  color: var(--header-text);
+}
+
+.hireiq-navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.hireiq-navbar__link:hover::after {
+  width: 70%;
+  left: 15%;
+}
+
+.hireiq-navbar__user {
+  font-size: 0.82rem;
+  color: var(--header-text2);
+  padding: 0 0.4rem;
+  font-weight: 500;
+}
+
+.hireiq-navbar__theme-toggle {
+  background: var(--header-hover);
+  border: 1px solid var(--header-border);
+  color: var(--header-text2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all var(--transition);
+  font-weight: 600;
+}
+
+.hireiq-navbar__theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--header-text);
+  background: var(--header-border);
+}
+
+.hireiq-navbar__logout-btn {
+  border-color: var(--header-border) !important;
+  color: var(--header-text2) !important;
+}
+
+.hireiq-navbar__logout-btn:hover {
+  background: var(--header-hover) !important;
+  color: var(--header-text) !important;
+  border-color: var(--header-text2) !important;
+}
+
+.hireiq-navbar__register-btn {
+  display: inline-flex;
+}

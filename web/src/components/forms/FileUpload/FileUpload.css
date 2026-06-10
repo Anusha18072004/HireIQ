@@ -1,0 +1,95 @@
+.hireiq-file-upload {
+  width: 100%;
+}
+
+.hireiq-file-upload__dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.5rem;
+  background: var(--surface2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.hireiq-file-upload__dropzone:hover,
+.hireiq-file-upload__dropzone--active {
+  border-color: var(--primary);
+  background: var(--primary-lt);
+}
+
+.hireiq-file-upload__input {
+  display: none;
+}
+
+.hireiq-file-upload__icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  user-select: none;
+}
+
+.hireiq-file-upload__instructions {
+  margin-bottom: 1rem;
+}
+
+.hireiq-file-upload__text-bold {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+}
+
+.hireiq-file-upload__text-muted {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+.hireiq-file-upload__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.hireiq-file-upload__filename {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hireiq-file-upload__filesize {
+  font-size: 0.75rem;
+  color: var(--text2);
+}
+
+.hireiq-file-upload__button {
+  margin-top: 0.5rem;
+}
+
+.hireiq-file-upload__error {
+  font-size: 0.8rem;
+  color: var(--danger);
+  margin-top: 0.75rem;
+  font-weight: 500;
+  animation: slideUp 0.2s ease both;
+}
+
+/* Button row — holds Pick, Upload, and Clear side by side */
+.hireiq-file-upload__btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+/* Override default button top margin when inside the btn-row */
+.hireiq-file-upload__btn-row .hireiq-file-upload__button {
+  margin-top: 0;
+}

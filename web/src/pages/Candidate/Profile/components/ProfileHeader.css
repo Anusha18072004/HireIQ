@@ -1,0 +1,197 @@
+.hireiq-profile-header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hireiq-profile-header {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.hireiq-profile-header__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 480px) {
+  .hireiq-profile-header__main {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.hireiq-profile-header__avatar {
+  width: 90px;
+  height: 90px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+
+.hireiq-profile-header__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.hireiq-profile-header__name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hireiq-profile-header__name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.hireiq-profile-header__edit-btn {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+.hireiq-profile-header__role {
+  font-size: 0.95rem;
+  color: var(--text2);
+  margin: 0;
+  font-weight: 500;
+}
+
+.hireiq-profile-header__role--empty {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.hireiq-profile-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.hireiq-profile-header__meta-item {
+  font-size: 0.85rem;
+  color: var(--text2);
+  background: var(--surface2);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.hireiq-profile-header__stats {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.hireiq-profile-header__stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-profile-header__stat-num {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hireiq-profile-header__stat-label {
+  font-size: 0.75rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hireiq-profile-header__completion-wrap {
+  width: 100%;
+}
+
+/* ── Summary text ──────────────────────────────────────────── */
+.hireiq-profile-header__summary {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin: 0.25rem 0 0;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ── Link chips ────────────────────────────────────────────── */
+.hireiq-profile-header__link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hireiq-profile-header__link:hover {
+  text-decoration: underline;
+}
+
+/* ── Inline edit form ──────────────────────────────────────── */
+.hireiq-profile-header__edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hireiq-profile-header__edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .hireiq-profile-header__edit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hireiq-profile-header__edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hireiq-profile-header__edit-field--full {
+  grid-column: 1 / -1;
+}
+
+.hireiq-profile-header__edit-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.hireiq-profile-header__edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding-top: 0.25rem;
+}

@@ -1,0 +1,98 @@
+.hireiq-job-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.hireiq-job-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.hireiq-job-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-job-card__company {
+  font-size: 0.82rem;
+  color: var(--text2);
+  margin-top: 0.2rem;
+}
+
+.hireiq-job-card__meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+.hireiq-job-card__description {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.5;
+  margin: 0.4rem 0;
+}
+
+.hireiq-job-card__skills {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem;
+}
+
+.hireiq-job-card__skills strong {
+  color: var(--text);
+}
+
+.hireiq-job-card__score {
+  margin: 0.5rem 0;
+}
+
+.hireiq-job-card__alert {
+  padding: 0.75rem 0.95rem;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  line-height: 1.4;
+  margin: 0.4rem 0;
+}
+
+.hireiq-job-card__alert--success {
+  background: var(--success-lt);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.hireiq-job-card__alert--warning {
+  background: var(--warning-lt);
+  border-color: rgba(245, 154, 90, 0.2);
+  color: var(--warning);
+}
+
+.hireiq-job-card__alert--error {
+  background: var(--danger-lt);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+}
+
+.hireiq-job-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Specific styling for Improve Score button */
+.hireiq-job-card__btn--improve {
+  background: var(--accent);
+}
+.hireiq-job-card__btn--improve:hover {
+  box-shadow: 0 4px 12px var(--accent-lt);
+}

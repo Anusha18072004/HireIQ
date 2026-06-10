@@ -1,0 +1,58 @@
+.hireiq-stat-card {
+  padding: 1.1rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.hireiq-stat-card__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hireiq-stat-card__details {
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-stat-card__label {
+  font-size: 0.72rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.hireiq-stat-card__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 0.2rem;
+  line-height: 1;
+}
+
+.hireiq-stat-card__change {
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+
+.hireiq-stat-card__change--positive {
+  color: var(--success);
+}
+
+.hireiq-stat-card__change--negative {
+  color: var(--danger);
+}
+
+.hireiq-stat-card__change--neutral {
+  color: var(--text3);
+}
+
+.hireiq-stat-card__icon {
+  font-size: 2rem;
+  opacity: 0.85;
+  user-select: none;
+}

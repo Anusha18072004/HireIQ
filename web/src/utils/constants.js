@@ -1,0 +1,23 @@
+export const APP_NAME = 'HireIQ';
+export const API_BASE_URL = '/api';
+export const SCORE_THRESHOLD = 75;
+
+export const ROLES = {
+  CANDIDATE: 'CANDIDATE',
+  RECRUITER: 'RECRUITER',
+};
+
+export const APPLICATION_STATUS = {
+  PENDING: 'PENDING',
+  SHORTLISTED: 'SHORTLISTED',
+  REJECTED: 'REJECTED',
+  TEST_PASSED: 'TEST_PASSED',
+  TEST_FAILED: 'TEST_FAILED',
+  HIRED: 'HIRED',
+  WITHDRAWN: 'WITHDRAWN',
+};
+
+export const TEST_STATUS = {
+  PASSED: 'PASSED',
+  FAILED: 'FAILED',
+};

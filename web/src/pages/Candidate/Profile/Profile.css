@@ -1,0 +1,850 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   1. MAIN PAGE LAYOUT
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-profile-page__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .hireiq-profile-page__layout {
+    grid-template-columns: 2.2fr 1fr;
+  }
+}
+
+.hireiq-profile-page__main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hireiq-profile-page__sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   2. SECTION CARDS & EDIT BUTTONS
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-profile-page__section-card {
+  position: relative;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow) !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.hireiq-profile-page__section-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.hireiq-profile-page__edit-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: all var(--transition);
+  line-height: 1;
+}
+
+.hireiq-profile-page__edit-icon-btn:hover {
+  background: var(--surface2);
+}
+
+/* Empty States */
+.hireiq-profile-page__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: var(--surface2);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.hireiq-profile-page__empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
+.hireiq-profile-page__empty-text {
+  font-size: 0.9rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   3. INLINE FORMS & GENERAL GRIDS
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-profile-page__inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--surface2);
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 0.5rem;
+}
+
+.hireiq-profile-page__form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.hireiq-profile-page__form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.hireiq-profile-page__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.hireiq-profile-page__grid--2col {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.hireiq-profile-page__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  border-bottom: 1px solid rgba(46, 66, 104, 0.3);
+  padding-bottom: 0.6rem;
+}
+
+.hireiq-profile-page__info-label {
+  font-size: 0.78rem;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hireiq-profile-page__info-value {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   4. MODALS BACKDROP & DIALOGS
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 13, 24, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.hireiq-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  animation: hireiq-slide-up var(--transition);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+@keyframes hireiq-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hireiq-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hireiq-modal__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-modal__close-btn {
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.hireiq-modal__close-btn:hover {
+  color: var(--danger);
+}
+
+.hireiq-modal__form {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hireiq-modal__form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.hireiq-modal__alert-error {
+  background: var(--danger-lt);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+}
+
+.hireiq-modal__current-job-wrap {
+  margin: 0.25rem 0;
+}
+
+.hireiq-modal__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.hireiq-modal__checkbox {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.hireiq-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   5. WORK EXPERIENCE CARD / TIMELINE
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hireiq-experience-card {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hireiq-experience-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hireiq-experience-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hireiq-experience-card__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-experience-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hireiq-experience-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-experience-card__actions,
+.hireiq-education-card__actions,
+.hireiq-project-card__actions,
+.hireiq-cert-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.hireiq-experience-card__action-btn,
+.hireiq-education-card__action-btn,
+.hireiq-project-card__action-btn,
+.hireiq-cert-card__action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all var(--transition);
+}
+
+.hireiq-experience-card__action-btn:hover,
+.hireiq-education-card__action-btn:hover,
+.hireiq-project-card__action-btn:hover,
+.hireiq-cert-card__action-btn:hover {
+  background: var(--surface2);
+}
+
+.hireiq-experience-card__subtitle {
+  font-size: 0.9rem;
+  color: var(--text2);
+  margin: 0;
+  font-weight: 500;
+}
+
+.hireiq-experience-card__type {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hireiq-experience-card__duration,
+.hireiq-education-card__duration,
+.hireiq-project-card__duration,
+.hireiq-cert-card__duration {
+  font-size: 0.82rem;
+  color: var(--text2);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hireiq-experience-card__location {
+  font-size: 0.82rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+.hireiq-experience-card__desc,
+.hireiq-project-card__desc {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin: 0.4rem 0;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.hireiq-experience-card__more-btn,
+.hireiq-project-card__more-btn {
+  border: none;
+  background: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.hireiq-experience-card__more-btn:hover,
+.hireiq-project-card__more-btn:hover {
+  text-decoration: underline;
+}
+
+.hireiq-experience-card__skills,
+.hireiq-project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.hireiq-experience-card__skill-chip,
+.hireiq-project-card__tech-chip {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   6. EDUCATION CARD
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hireiq-education-card {
+  display: flex;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hireiq-education-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hireiq-education-card__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-education-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hireiq-education-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-education-card__institute {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  font-weight: 500;
+}
+
+.hireiq-education-card__university {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+.hireiq-education-card__meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.hireiq-education-card__grade {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   7. PROJECTS CARD
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hireiq-project-card {
+  display: flex;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hireiq-project-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hireiq-project-card__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-project-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hireiq-project-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-project-card__links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.hireiq-project-card__link {
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color var(--transition);
+}
+
+.hireiq-project-card__link:hover {
+  color: var(--text);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   8. CERTIFICATIONS CARD
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hireiq-cert-card {
+  display: flex;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hireiq-cert-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hireiq-cert-card__content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-cert-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hireiq-cert-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-cert-card__org {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  font-weight: 500;
+}
+
+.hireiq-cert-card__cred-id {
+  font-size: 0.82rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+.hireiq-cert-card__cred-val {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hireiq-cert-card__links {
+  margin-top: 0.4rem;
+}
+
+.hireiq-cert-card__link {
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.hireiq-cert-card__link:hover {
+  color: var(--text);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   9. LANGUAGES CARD
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-language-form {
+  margin-bottom: 1rem;
+  background: var(--surface2) !important;
+}
+
+.hireiq-language-form__error {
+  color: var(--danger);
+  font-size: 0.82rem;
+}
+
+.hireiq-language-form__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1rem;
+}
+
+.hireiq-language-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-language-form__label {
+  font-size: 0.82rem;
+  color: var(--text2);
+}
+
+.hireiq-language-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hireiq-language-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hireiq-language-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+  transition: all var(--transition);
+}
+
+.hireiq-language-chip:hover {
+  border-color: var(--accent);
+}
+
+.hireiq-language-chip__name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.hireiq-language-chip__prof {
+  color: var(--accent);
+  font-size: 0.78rem;
+  background: var(--accent-lt);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.hireiq-language-chip__delete {
+  background: none;
+  border: none;
+  color: var(--text2);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+
+.hireiq-language-chip__delete:hover {
+  background: var(--danger-lt);
+  color: var(--danger);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   10. RESUME CARD
+   ────────────────────────────────────────────────────────────────────────── */
+.hireiq-resume-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hireiq-resume-card__status {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hireiq-resume-card__info {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.hireiq-resume-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.hireiq-resume-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hireiq-resume-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.hireiq-resume-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hireiq-resume-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.hireiq-resume-card__link-btn {
+  text-decoration: none;
+}
+
+.hireiq-resume-card__empty {
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.hireiq-resume-card__empty-text {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.hireiq-resume-card__uploader-wrap {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+.hireiq-resume-card__uploader-wrap--no-border {
+  border-top: none;
+  padding-top: 0;
+}
+
+/* ── Inline PDF viewer ─────────────────────────────────────── */
+.hireiq-resume-card__viewer-wrap {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-resume-card__viewer {
+  width: 100%;
+  height: 620px;
+  border: none;
+  display: block;
+  background: #f5f5f5;
+}
+
+.hireiq-resume-card__viewer-hint {
+  font-size: 0.78rem;
+  color: var(--text2);
+  padding: 0.5rem 0.75rem;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  margin: 0;
+  text-align: center;
+}
+
+.hireiq-resume-card__viewer-hint a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.ai-badge {
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: #22D3EE;
+  font-size: 0.62rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-block;
+  line-height: 1;
+}

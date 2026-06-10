@@ -1,0 +1,25 @@
+.hireiq-jobs-page__search-form {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.hireiq-jobs-page__search-input {
+  max-width: 400px;
+  flex: 1;
+}
+
+.hireiq-jobs-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.hireiq-jobs-page__loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}

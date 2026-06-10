@@ -1,0 +1,103 @@
+.hireiq-suggestion-panel {
+  width: 100%;
+}
+
+.hireiq-suggestion-panel__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hireiq-suggestion-panel__card {
+  transition: all var(--transition);
+  animation: slideUp 0.4s ease both;
+}
+
+/* Green Variant Card */
+.hireiq-suggestion-panel__card--green {
+  border-left: 4px solid var(--success);
+  background: linear-gradient(135deg, var(--surface2) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+/* Orange Variant Card */
+.hireiq-suggestion-panel__card--orange {
+  border-left: 4px solid var(--warning);
+  background: linear-gradient(135deg, var(--surface2) 0%, rgba(245, 154, 90, 0.05) 100%);
+}
+
+/* Red Variant Card */
+.hireiq-suggestion-panel__card--red {
+  border-left: 4px solid var(--danger);
+  background: linear-gradient(135deg, var(--surface2) 0%, rgba(239, 68, 68, 0.04) 100%);
+}
+
+/* Purple Variant Card */
+.hireiq-suggestion-panel__card--purple {
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(135deg, var(--surface2) 0%, rgba(139, 92, 246, 0.04) 100%);
+}
+
+/* Study Plan Section */
+.hireiq-suggestion-panel__study-plan {
+  margin-top: 1rem;
+}
+
+.hireiq-suggestion-panel__study-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  color: var(--text);
+}
+
+.hireiq-suggestion-panel__study-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Study Card (Expandable) */
+.hireiq-study-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  overflow: hidden;
+}
+
+.hireiq-study-card:hover {
+  border-color: var(--primary);
+  background: var(--surface3);
+}
+
+.hireiq-study-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.1rem;
+  user-select: none;
+}
+
+.hireiq-study-card__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hireiq-study-card__arrow {
+  font-size: 0.72rem;
+  color: var(--text3);
+  transition: transform var(--transition);
+}
+
+.hireiq-study-card__body {
+  padding: 1.1rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  cursor: default;
+}
+
+.hireiq-study-card--expanded {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}

@@ -1,0 +1,542 @@
+/* Progressive form steps indicator */
+.hireiq-post-job__wizard-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  position: relative;
+  background: var(--surface2);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.wizard-indicator-step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.wizard-indicator-step:hover {
+  opacity: 0.8;
+}
+
+.wizard-indicator-step--active {
+  opacity: 1;
+}
+
+.wizard-indicator-step--completed {
+  opacity: 0.9;
+}
+
+.wizard-indicator-step__circle {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--text2);
+  transition: all 0.3s ease;
+}
+
+.wizard-indicator-step--active .wizard-indicator-step__circle {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.3);
+}
+
+.wizard-indicator-step--completed .wizard-indicator-step__circle {
+  border-color: var(--success);
+  background: var(--success-lt);
+  color: var(--success);
+}
+
+.wizard-indicator-step__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.wizard-indicator-step--active .wizard-indicator-step__label {
+  color: var(--accent);
+}
+
+/* Header action buttons and autosave indicator */
+.hireiq-post-job__header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hireiq-post-job__duplicate-select {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hireiq-post-job__duplicate-select select {
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  min-width: 250px;
+}
+
+.hireiq-post-job__autosave-badge {
+  font-size: 0.8rem;
+  color: var(--text2);
+  background: var(--surface2);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+/* Multi-step progressive form grid */
+.post-job-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.post-job-step-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.post-job-step-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.post-job-step-grid__row-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.post-job-step-grid__row-3col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Skill tags and chip styles */
+.hireiq-skill-chip-input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.hireiq-skill-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 42px;
+  padding: 0.5rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  align-items: center;
+}
+
+.hireiq-skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.required-chip {
+  background: var(--primary-lt);
+  color: var(--primary);
+  border: 1px solid var(--primary-mid);
+}
+
+.preferred-chip {
+  background: var(--accent-lt);
+  color: var(--accent);
+  border: 1px solid var(--accent-mid);
+}
+
+.chip-close {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.8rem;
+  margin-left: 0.15rem;
+  opacity: 0.7;
+}
+
+.chip-close:hover {
+  opacity: 1;
+}
+
+.no-tags-placeholder {
+  font-size: 0.85rem;
+  color: var(--text2);
+  font-style: italic;
+}
+
+/* Compensation slider prioritize tracks */
+.priority-slider-row {
+  margin-bottom: 1.25rem;
+}
+
+.slider-header-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hireiq-range-slider {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  outline: none;
+  border-radius: var(--radius-pill);
+  accent-color: var(--accent);
+}
+
+.weights-sum-indicator {
+  text-align: right;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+/* Notice/toggles settings */
+.post-job-toggle-box {
+  background: var(--surface3);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.toggle-label-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.toggle-label-checkbox input {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+
+.hiring-steps-checkboxes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+}
+
+.inline-checkbox {
+  font-weight: 500;
+}
+
+.toggles-flex-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Knockout layout card items */
+.add-knockout-controls-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.knockout-questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.knockout-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface3);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.knockout-item-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.knockout-item-expected-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.select-xs {
+  font-size: 0.8rem;
+  padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+  width: auto;
+}
+
+.btn-icon-delete {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.no-knockout-text {
+  font-size: 0.85rem;
+  color: var(--text2);
+  font-style: italic;
+}
+
+.post-job-divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}
+
+.post-job-section-subtitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.post-job-section-desc {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-bottom: 1rem;
+}
+
+/* LIVE PREVIEW MODAL STYLES */
+.preview-job-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.preview-job-modal-content {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: modalZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preview-job-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-job-modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.preview-close-btn {
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.preview-job-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.preview-job-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.preview-job-title-row h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.preview-badge-status {
+  background: var(--primary-lt);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.preview-job-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  background: var(--surface3);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.preview-divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+.preview-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.preview-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.preview-chip {
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.required-preview {
+  background: var(--primary-lt);
+  color: var(--primary);
+}
+
+.preferred-preview {
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+
+.preview-hiring-stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.preview-stage-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface3);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.stage-num {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.preview-modal-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Animations */
+.animate-slide-in {
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modalZoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

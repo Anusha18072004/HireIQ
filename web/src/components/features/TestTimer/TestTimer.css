@@ -1,0 +1,33 @@
+.hireiq-test-timer {
+  background: var(--primary-lt);
+  border: 1px solid var(--primary-mid);
+  border-radius: var(--radius);
+  padding: 0.4rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  transition: all var(--transition);
+}
+
+.hireiq-test-timer__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.hireiq-test-timer__value {
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Urgent state styling */
+.hireiq-test-timer--urgent {
+  background: var(--danger-lt);
+  border-color: var(--danger);
+}
+
+.hireiq-test-timer--urgent .hireiq-test-timer__value {
+  color: var(--danger);
+  animation: pulse 1s infinite;
+}

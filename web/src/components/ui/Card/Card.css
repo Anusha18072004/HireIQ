@@ -1,0 +1,87 @@
+.hireiq-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+}
+
+.hireiq-card--interactive {
+  cursor: pointer;
+}
+
+.hireiq-card--interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-mid);
+}
+
+.hireiq-card-flat {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+/* Header style inside card */
+.hireiq-card__header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hireiq-card__header-text {
+  flex: 1;
+}
+
+.hireiq-card__action {
+  flex-shrink: 0;
+}
+
+.hireiq-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 0.2rem 0;
+}
+
+.hireiq-card__subtitle {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin: 0;
+}
+
+/* Variant color borders for landing features */
+.hireiq-card--blue {
+  border-top: 3px solid #1E5FA8;
+}
+.hireiq-card--blue:hover {
+  border-color: #1E5FA8;
+  box-shadow: 0 8px 30px rgba(30, 95, 168, 0.25);
+}
+
+.hireiq-card--orange {
+  border-top: 3px solid #E07B39;
+}
+.hireiq-card--orange:hover {
+  border-color: #E07B39;
+  box-shadow: 0 8px 30px rgba(224, 123, 57, 0.25);
+}
+
+.hireiq-card--purple {
+  border-top: 3px solid #8B5CF6;
+}
+.hireiq-card--purple:hover {
+  border-color: #8B5CF6;
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.25);
+}
+
+.hireiq-card--primary {
+  border: 1px solid var(--primary);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--primary-lt) 100%);
+}

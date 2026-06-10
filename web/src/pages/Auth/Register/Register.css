@@ -1,0 +1,106 @@
+.hireiq-register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: 2rem 1rem;
+  background: var(--bg);
+}
+
+.hireiq-register-page__card {
+  width: 100%;
+  max-width: 440px;
+  animation: slideUp 0.5s ease both;
+}
+
+.hireiq-register-page__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-register-page__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-register-page__subtitle {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.hireiq-register-page__alert {
+  margin-bottom: 1.25rem;
+}
+
+.hireiq-register-page__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-register-page__role-selector {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.hireiq-register-page__role-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  flex: 1;
+  padding: 0.7rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.hireiq-register-page__role-option:hover {
+  border-color: var(--primary);
+}
+
+.hireiq-register-page__role-option--selected {
+  border-color: var(--primary);
+  background: var(--primary-lt);
+}
+
+.hireiq-register-page__role-radio {
+  accent-color: var(--primary);
+}
+
+.hireiq-register-page__role-label-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.hireiq-register-page__role-option--selected .hireiq-register-page__role-label-text {
+  font-weight: 700;
+}
+
+.hireiq-register-page__submit-btn {
+  margin-top: 0.5rem;
+}
+
+.hireiq-register-page__footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text2);
+}
+
+.hireiq-register-page__link {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.hireiq-register-page__link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

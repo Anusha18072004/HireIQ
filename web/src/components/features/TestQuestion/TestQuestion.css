@@ -1,0 +1,69 @@
+.hireiq-test-question {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  width: 100%;
+}
+
+.hireiq-test-question__text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+
+.hireiq-test-question__num {
+  color: var(--primary);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.hireiq-test-question__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hireiq-test-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 0.88rem;
+  color: var(--text2);
+  user-select: none;
+}
+
+.hireiq-test-option:hover {
+  border-color: var(--primary);
+  background: var(--primary-lt);
+  color: var(--primary);
+}
+
+.hireiq-test-option--selected {
+  border-color: var(--primary);
+  background: var(--primary-lt);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.hireiq-test-option__input {
+  display: none;
+}
+
+.hireiq-test-option__marker {
+  font-weight: 700;
+  color: var(--primary);
+  min-width: 20px;
+}
+
+.hireiq-test-option__text {
+  flex: 1;
+}

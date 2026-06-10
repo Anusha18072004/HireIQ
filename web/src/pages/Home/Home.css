@@ -1,0 +1,188 @@
+.hireiq-home {
+  min-height: calc(100vh - 64px);
+  background: var(--bg);
+}
+
+.hireiq-home__hero {
+  background: radial-gradient(circle at top right, rgba(30, 95, 168, 0.1), transparent 45%),
+              radial-gradient(circle at bottom left, rgba(224, 123, 57, 0.08), transparent 45%),
+              var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hireiq-home__hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hireiq-home__hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--text2);
+  max-width: 620px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hireiq-home__hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* Features section styling */
+.hireiq-home__features {
+  background: radial-gradient(80% 80% at 50% 50%, rgba(30, 95, 168, 0.06) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0;
+}
+
+.hireiq-home__section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.hireiq-home__features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.hireiq-home__feature-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hireiq-home__feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform var(--transition);
+}
+
+.hireiq-home__feature-card:hover .hireiq-home__feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.hireiq-home__feature-title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.hireiq-home__feature-desc {
+  color: var(--text2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Rules Section */
+.hireiq-home__rules-section {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0;
+}
+
+.hireiq-home__rules-panel {
+  background: var(--surface-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem;
+  box-shadow: var(--shadow);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hireiq-home__rules-title {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.hireiq-home__rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.1rem;
+}
+
+.hireiq-home__rule-card {
+  text-align: center;
+  padding: 1.4rem 1.2rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid;
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hireiq-home__rule-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.hireiq-home__rule-card--success {
+  background: var(--success-lt);
+  border-color: var(--success);
+}
+
+.hireiq-home__rule-card--orange {
+  background: var(--warning-lt);
+  border-color: var(--warning);
+}
+
+.hireiq-home__rule-card--purple {
+  background: var(--danger-lt);
+  border-color: var(--danger);
+}
+
+.hireiq-home__rule-score {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--rule-color);
+}
+
+.hireiq-home__rule-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin: 0.4rem 0;
+  color: var(--rule-color);
+}
+
+.hireiq-home__rule-desc {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.4;
+}
+
+.hireiq-home__rules-legend {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text3);
+  margin-top: 1.5rem;
+  font-weight: 500;
+}

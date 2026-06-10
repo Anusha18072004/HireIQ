@@ -1,0 +1,88 @@
+:root {
+  /* Dark mode (default) */
+  --bg:           #080D18;
+  --surface:      #0D1526;
+  --surface2:     #111E33;
+  --surface3:     #1A2A45;
+  --border:       #2E4268;
+  --text:         #E8EAF6;
+  --text2:        #8B96B8;
+  --text3:        #4B5A7E;
+  
+  --primary:      #1E5FA8;
+  --primary-lt:   rgba(30, 95, 168, 0.15);
+  --primary-mid:  #173E6B;
+  
+  --accent:       #E07B39;
+  --accent-lt:    rgba(224, 123, 57, 0.15);
+  
+  --success:      #10B981;
+  --success-lt:   rgba(16, 185, 129, 0.12);
+  
+  --warning:      #F59A5A;
+  --warning-lt:   rgba(245, 154, 90, 0.12);
+  
+  --danger:       #EF4444;
+  --danger-lt:    rgba(239, 68, 68, 0.10);
+  
+  --beige:        #D4C4A8;
+  --cream:        #EDE0CC;
+  
+  --radius:       8px;
+  --radius-lg:    12px;
+  --radius-xl:    16px;
+  
+  --shadow:       0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-hover: 0 8px 24px rgba(30, 95, 168, 0.2);
+  --transition:   200ms ease-in-out;
+
+  /* Header System for Dark Mode (Light Navbar) */
+  --header-bg:     #FFFFFF;
+  --header-text:   #080D18;
+  --header-text2:  #4B5A7E;
+  --header-border: #E2E8F0;
+  --header-hover:  #F0F4F8;
+
+  /* Gray system mapping in Dark Mode */
+  --gray-50:      #0D1526;
+  --gray-100:     #111E33;
+  --gray-200:     #1A2A45;
+  --gray-400:     #4B5A7E;
+  --gray-600:     #8B96B8;
+}
+
+[data-theme="light"] {
+  --bg:           #FAF6F0;
+  --surface:      #FFFFFF;
+  --surface2:     #F5EFE6;
+  --surface3:     #EDE0CC;
+  --border:       #D4C4A8;
+  --text:         #1A1210;
+  --text2:        #6B5A3E;
+  --text3:        #9B8A6E;
+  
+  --primary:      #1E5FA8;
+  --primary-lt:   #EEF4FF;
+  --primary-mid:  #ADCDEE;
+  
+  --accent:       #E07B39;
+  --accent-lt:    #FFF0E5;
+  
+  --shadow:       0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 20px rgba(224, 123, 57, 0.15);
+
+  /* Header System for Light Mode (Dark Navy Navbar) */
+  --header-bg:     #0D1526;
+  --header-text:   #FAF6F0;
+  --header-text2:  #8B96B8;
+  --header-border: #1E2D4A;
+  --header-hover:  #1A2A45;
+
+  /* Gray system mapping in Light Mode */
+  --gray-50:      #FAF6F0;
+  --gray-100:     #EDE0CC;
+  --gray-200:     #D4C4A8;
+  --gray-400:     #8B7355;
+  --gray-600:     #2A2318;
+}

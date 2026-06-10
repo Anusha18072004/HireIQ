@@ -1,0 +1,46 @@
+.hireiq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.hireiq-badge--primary {
+  background: var(--primary-lt);
+  color: var(--primary);
+}
+
+.hireiq-badge--success {
+  background: var(--success-lt);
+  color: var(--success);
+}
+
+.hireiq-badge--warning {
+  background: var(--warning-lt);
+  color: var(--warning);
+}
+
+.hireiq-badge--danger {
+  background: var(--danger-lt);
+  color: var(--danger);
+}
+
+.hireiq-badge--info {
+  background: var(--primary-lt);
+  color: var(--primary);
+}
+
+.hireiq-badge--accent {
+  background: var(--accent-lt);
+  color: var(--accent);
+}
+
+.hireiq-badge--gray {
+  background: var(--surface2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}

@@ -1,0 +1,38 @@
+.hireiq-score-bar {
+  width: 100%;
+}
+
+.hireiq-score-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text2);
+  margin-bottom: 4px;
+}
+
+.hireiq-score-bar__label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hireiq-score-bar__value {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.hireiq-score-bar__track {
+  height: 6px;
+  background: var(--surface3);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hireiq-score-bar__fill {
+  height: 100%;
+  border-radius: 20px;
+  width: 0%;
+  transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}

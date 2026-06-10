@@ -1,0 +1,48 @@
+.hireiq-spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.hireiq-spinner--xs {
+  width: 12px;
+  height: 12px;
+  border-width: 1.5px;
+}
+
+.hireiq-spinner--sm {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.hireiq-spinner--md {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.hireiq-spinner--lg {
+  width: 36px;
+  height: 36px;
+  border-width: 3px;
+}
+
+/* Variants */
+.hireiq-spinner--primary {
+  border-color: var(--primary-lt);
+  border-top-color: var(--primary);
+}
+
+.hireiq-spinner--white {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+}
+
+.hireiq-spinner--accent {
+  border-color: var(--accent-lt);
+  border-top-color: var(--accent);
+}

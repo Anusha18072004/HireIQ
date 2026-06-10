@@ -1,0 +1,267 @@
+.hireiq-test-page__centered-container {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hireiq-test-page__status-card {
+  text-align: center;
+  padding: 2.2rem 1.5rem;
+}
+
+.hireiq-test-page__icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.hireiq-test-page__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.hireiq-test-page__job-title-desc {
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__last-score-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hireiq-test-page__last-score-label {
+  font-size: 0.8rem;
+  color: var(--text2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hireiq-test-page__last-score-val {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hireiq-test-page__feedback-toggle-section {
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__feedback-toggle-btn {
+  justify-content: center !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-mid) !important;
+}
+
+.hireiq-test-page__previous-coaching {
+  margin-top: 1rem;
+}
+
+.hireiq-test-page__rules-alert {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.hireiq-test-page__rules-list {
+  padding-left: 1.2rem;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text2);
+}
+
+.hireiq-test-page__rules-list li {
+  margin-bottom: 0.25rem;
+}
+
+/* Test Phase Layout */
+.hireiq-test-page__test-container {
+  max-width: 750px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hireiq-test-page__test-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: var(--surface2);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hireiq-test-page__question-progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-test-page__question-index-label {
+  font-size: 0.85rem;
+  color: var(--text2);
+  font-weight: 600;
+}
+
+.hireiq-test-page__question-answered-count {
+  font-size: 0.78rem;
+  color: var(--text3);
+}
+
+.hireiq-test-page__attempt-label {
+  font-size: 0.85rem;
+  color: var(--text2);
+  font-weight: 600;
+}
+
+.hireiq-test-page__progress-track {
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.hireiq-test-page__progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.hireiq-test-page__question-block {
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.hireiq-test-page__dots {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.hireiq-test-page__dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--surface2);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.hireiq-test-page__dot:hover {
+  border-color: var(--primary);
+}
+
+.hireiq-test-page__dot--current {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.hireiq-test-page__dot--answered {
+  background: var(--success);
+  color: #ffffff;
+  border-color: var(--success);
+}
+
+.hireiq-test-page__full-submit-helper {
+  margin-top: 1.5rem;
+}
+
+/* Result Phase Layout */
+.hireiq-test-page__result-card {
+  text-align: center;
+  padding: 2.2rem 1.5rem;
+}
+
+.hireiq-test-page__grade-panel {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hireiq-test-page__grade-val {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hireiq-test-page__grade-details {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.hireiq-test-page__result-message {
+  color: var(--text2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__result-coaching {
+  text-align: left;
+  margin-top: 2rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__coaching-title {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hireiq-test-page__next-allowed-alert {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-test-page__result-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.hireiq-test-page__action-btn {
+  flex: 1;
+}

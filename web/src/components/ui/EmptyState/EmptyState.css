@@ -1,0 +1,39 @@
+.hireiq-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--surface2);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 1.5rem auto;
+}
+
+.hireiq-empty-state__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.hireiq-empty-state__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.hireiq-empty-state__description {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+.hireiq-empty-state__action {
+  display: flex;
+  justify-content: center;
+}

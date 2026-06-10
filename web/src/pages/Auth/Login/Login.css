@@ -1,0 +1,63 @@
+.hireiq-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  padding: 2rem 1rem;
+  background: var(--bg);
+}
+
+.hireiq-login-page__card {
+  width: 100%;
+  max-width: 420px;
+  animation: slideUp 0.5s ease both;
+}
+
+.hireiq-login-page__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hireiq-login-page__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-login-page__subtitle {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.hireiq-login-page__alert {
+  margin-bottom: 1.25rem;
+}
+
+.hireiq-login-page__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.hireiq-login-page__submit-btn {
+  margin-top: 0.5rem;
+}
+
+.hireiq-login-page__footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text2);
+}
+
+.hireiq-login-page__link {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.hireiq-login-page__link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

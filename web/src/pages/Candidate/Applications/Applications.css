@@ -1,0 +1,152 @@
+.hireiq-apps-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.hireiq-apps-page__card {
+  padding: 1.5rem;
+}
+
+.hireiq-apps-page__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hireiq-apps-page__details {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hireiq-apps-page__job-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-apps-page__company {
+  color: var(--text2);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.hireiq-apps-page__reason {
+  font-size: 0.85rem;
+  color: var(--text2);
+  margin-top: 0.4rem;
+}
+
+.hireiq-apps-page__status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.hireiq-apps-page__score-wrap {
+  text-align: right;
+}
+
+.hireiq-apps-page__score-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.hireiq-apps-page__score-bar {
+  width: 120px;
+  margin-top: 0.2rem;
+}
+
+.hireiq-apps-page__actions {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.hireiq-apps-page__pass-badge {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+.hireiq-apps-page__date {
+  font-size: 0.8rem;
+  color: var(--text3);
+  margin-left: auto;
+}
+
+/* Copilot styles */
+.hireiq-apps-page__copilot {
+  margin-top: 1.25rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+}
+
+.hireiq-apps-page__copilot-toggle {
+  justify-content: center;
+  color: var(--primary) !important;
+  border-color: var(--border) !important;
+}
+
+.hireiq-apps-page__copilot-toggle--expanded {
+  background: var(--primary-lt) !important;
+}
+
+.hireiq-apps-page__copilot-content {
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--primary-lt) 100%);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  animation: slideUp 0.3s ease both;
+}
+
+.hireiq-apps-page__copilot-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.hireiq-apps-page__copilot-tab-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.hireiq-apps-page__copilot-tab-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.hireiq-apps-page__copilot-tab-btn--active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.hireiq-apps-page__copilot-tab-btn--active:hover {
+  color: #ffffff;
+}
+
+.hireiq-apps-page__copilot-panel-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}

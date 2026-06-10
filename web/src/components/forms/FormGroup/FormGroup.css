@@ -1,0 +1,108 @@
+.hireiq-form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.hireiq-form-group__label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text2);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.hireiq-form-group__required {
+  color: var(--danger);
+  margin-left: 2px;
+}
+
+.hireiq-form-group__field {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+/* Base class styling to inject onto child input elements */
+.hireiq-form-group__field input,
+.hireiq-form-group__field textarea,
+.hireiq-form-group__field select,
+.hireiq-form-control {
+  width: 100%;
+  padding: 0.58rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.875rem;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.hireiq-form-group__field input:focus,
+.hireiq-form-group__field textarea:focus,
+.hireiq-form-group__field select:focus,
+.hireiq-form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-lt);
+}
+
+.hireiq-form-group__field input::placeholder,
+.hireiq-form-group__field textarea::placeholder,
+.hireiq-form-control::placeholder {
+  color: var(--text3);
+}
+
+.hireiq-form-group__field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.hireiq-form-group__error-msg {
+  font-size: 0.75rem;
+  color: var(--danger);
+  margin-top: 0.35rem;
+  animation: slideUp 0.2s ease both;
+}
+
+.hireiq-password-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.hireiq-password-input {
+  padding-right: 2.75rem !important;
+}
+
+.hireiq-password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  color: var(--text2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition);
+  z-index: 2;
+}
+
+.hireiq-password-toggle:hover {
+  color: var(--accent);
+}
+
+.hireiq-password-toggle:focus {
+  outline: none;
+  color: var(--accent);
+}
+

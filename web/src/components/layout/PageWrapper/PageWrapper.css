@@ -1,0 +1,43 @@
+.hireiq-page-wrapper {
+  padding: 2.5rem 0;
+  min-height: calc(100vh - 64px);
+  background: var(--bg);
+  transition: background var(--transition);
+}
+
+.hireiq-page-wrapper__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hireiq-page-wrapper__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hireiq-page-wrapper__title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hireiq-page-wrapper__subtitle {
+  color: var(--text2);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.hireiq-page-wrapper__action {
+  display: flex;
+  align-items: center;
+}
+
+.hireiq-page-wrapper__content {
+  width: 100%;
+}
