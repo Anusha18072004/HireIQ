@@ -45,8 +45,11 @@ export const Register = () => {
     }
 
     try {
-      const res = await register(form.fullName, form.email, form.password, form.role);
-      setSuccessMessage(res.message || 'Registration successful! Verification email sent.');
+      await register(form.fullName, form.email, form.password, form.role);
+      setSuccessMessage('Registration successful! Redirecting you to the sign-in page...');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
     } catch (err) {
       setSubmitError(err.message || 'Registration failed.');
     }
@@ -57,19 +60,16 @@ export const Register = () => {
       <div className="hireiq-register-page">
         <Card className="hireiq-register-page__card">
           <div className="hireiq-register-page__header" style={{ textAlign: 'center' }}>
-            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>✉️</span>
-            <h1 className="hireiq-register-page__title">Verify your Email</h1>
-            <p className="hireiq-register-page__subtitle">Activation link has been sent</p>
+            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🎉</span>
+            <h1 className="hireiq-register-page__title">Account Created!</h1>
+            <p className="hireiq-register-page__subtitle">Redirecting to login...</p>
           </div>
-          <Alert variant="success" style={{ margin: '1.25rem 0', lineHeight: '1.6' }}>
+          <Alert variant="success" style={{ margin: '1.25rem 0', lineHeight: '1.6', textAlign: 'center' }}>
             {successMessage}
           </Alert>
-          <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: '1.6', textAlign: 'center', margin: '1.25rem 0' }}>
-            Please make sure to check your spam/junk folder if you do not see the email in your inbox within a few minutes.
-          </p>
           <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
             <Link to="/login" style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--accent)', textDecoration: 'none' }}>
-              ← Return to Sign In
+              Click here to sign in now →
             </Link>
           </div>
         </Card>
