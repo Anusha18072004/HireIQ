@@ -9,6 +9,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +33,9 @@ public class EmailService {
     @Value("${RENDER_EXTERNAL_URL:http://localhost:8082}")
     private String renderExternalUrl;
 
+    @Value("${brevo.api.key:${BREVO_API_KEY:}}")
+    private String brevoApiKey;
+
     private String getBaseUrl() {
         if (configuredBaseUrl != null && !configuredBaseUrl.isBlank() && !configuredBaseUrl.contains("localhost")) {
             return configuredBaseUrl;
@@ -42,7 +52,87 @@ public class EmailService {
     @Async
     public void sendActivationEmail(String toEmail, String fullName, String token) {
         String activationUrl = getBaseUrl() + "/api/v1.0/activate?token=" + token;
-        
+
+        String content = String.format("""
+            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #080D18; color: #E8EAF6; padding: 40px; border-radius: 12px; max-width: 600px; margin: 0 auto; border: 1px solid #2E4268;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="color: #E07B39; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">HireIQ</h2>
+                    <p style="color: #8B96B8; font-size: 14px; margin: 5px 0 0 0;">AI-Powered Smart Recruitment Platform</p>
+                </div>
+                
+                <div style="background-color: #0D1526; padding: 30px; border-radius: 8px; border: 1px solid #2E4268; margin-bottom: 25px;">
+                    <h3 style="color: #E8EAF6; margin-top: 0; font-size: 20px;">Hello %s,</h3>
+                    <p style="color: #8B96B8; line-height: 1.6; font-size: 15px;">
+                        Thank you for registering on HireIQ! Please click the following link to activate your account:
+                    </p>
+                    
+                    <p style="word-break: break-all; font-size: 14px; background-color: #111E33; padding: 16px; border-radius: 6px; border: 1px solid #2E4268; text-align: center; margin: 25px 0;">
+                        <a href="%s" style="color: #E07B39; text-decoration: none; font-weight: 600; font-size: 15px;">%s</a>
+                    </p>
+                    
+                    <div style="text-align: center; margin: 25px 0;">
+                        <a href="%s" style="background-color: #1E5FA8; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 16px; font-weight: 600; border-radius: 6px; display: inline-block; transition: background-color 0.2s;">
+                            Activate Account
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; font-size: 12px; color: #4B5A7E;">
+                    <p style="margin: 0;">This email was sent automatically. Please do not reply to it.</p>
+                    <p style="margin: 5px 0 0 0;">&copy; 2026 HireIQ. All rights reserved.</p>
+                </div>
+            </div>
+            """, fullName, activationUrl, activationUrl, activationUrl);
+
+        if (brevoApiKey != null && !brevoApiKey.isBlank()) {
+            log.info("Brevo API Key detected. Attempting to send activation email via Brevo HTTP API to {}", toEmail);
+            try {
+                RestTemplate restTemplate = new RestTemplate();
+                String url = "https://api.brevo.com/v3/smtp/email";
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.set("api-key", brevoApiKey);
+                headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+                Map<String, Object> body = new HashMap<>();
+
+                Map<String, String> sender = new HashMap<>();
+                sender.put("name", "HireIQ");
+                sender.put("email", fromEmail != null && !fromEmail.isBlank() ? fromEmail : "anusha.c1807@gmail.com");
+                body.put("sender", sender);
+
+                Map<String, String> recipient = new HashMap<>();
+                recipient.put("email", toEmail);
+                recipient.put("name", fullName);
+                body.put("to", List.of(recipient));
+
+                body.put("subject", "Activate your HireIQ account");
+                body.put("htmlContent", content);
+
+                HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+                restTemplate.postForEntity(url, request, String.class);
+
+                log.info("Activation email successfully sent to {} via Brevo API", toEmail);
+                lastMailSuccess = "Successfully sent activation email via Brevo API to " + toEmail + " at " + new java.util.Date();
+                return;
+            } catch (Exception e) {
+                log.error("Failed to send activation email via Brevo API to {}: ", toEmail, e);
+                java.io.StringWriter sw = new java.io.StringWriter();
+                java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+                e.printStackTrace(pw);
+                lastMailError = "Error sending via Brevo API to " + toEmail + " at " + new java.util.Date() + "\n" +
+                                e.getClass().getName() + ": " + e.getMessage() + "\n" + sw.toString();
+                log.warn("\n========================================================================\n" +
+                         "DEVELOPMENT FALLBACK ACTIVATION LINK:\n" +
+                         "For user: {}\n" +
+                         "Activation Link: {}\n" +
+                         "========================================================================\n", toEmail, activationUrl);
+                throw new RuntimeException("Failed to send activation email via Brevo API", e);
+            }
+        }
+
+        log.info("No Brevo API Key configured. Falling back to SMTP for {}", toEmail);
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
@@ -50,54 +140,23 @@ public class EmailService {
             helper.setTo(toEmail);
             helper.setSubject("Activate your HireIQ account");
 
-            String content = String.format("""
-                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #080D18; color: #E8EAF6; padding: 40px; border-radius: 12px; max-width: 600px; margin: 0 auto; border: 1px solid #2E4268;">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <h2 style="color: #E07B39; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">HireIQ</h2>
-                        <p style="color: #8B96B8; font-size: 14px; margin: 5px 0 0 0;">AI-Powered Smart Recruitment Platform</p>
-                    </div>
-                    
-                    <div style="background-color: #0D1526; padding: 30px; border-radius: 8px; border: 1px solid #2E4268; margin-bottom: 25px;">
-                        <h3 style="color: #E8EAF6; margin-top: 0; font-size: 20px;">Hello %s,</h3>
-                        <p style="color: #8B96B8; line-height: 1.6; font-size: 15px;">
-                            Thank you for registering on HireIQ! Please click the following link to activate your account:
-                        </p>
-                        
-                        <p style="word-break: break-all; font-size: 14px; background-color: #111E33; padding: 16px; border-radius: 6px; border: 1px solid #2E4268; text-align: center; margin: 25px 0;">
-                            <a href="%s" style="color: #E07B39; text-decoration: none; font-weight: 600; font-size: 15px;">%s</a>
-                        </p>
-                        
-                        <div style="text-align: center; margin: 25px 0;">
-                            <a href="%s" style="background-color: #1E5FA8; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 16px; font-weight: 600; border-radius: 6px; display: inline-block; transition: background-color 0.2s;">
-                                Activate Account
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; font-size: 12px; color: #4B5A7E;">
-                        <p style="margin: 0;">This email was sent automatically. Please do not reply to it.</p>
-                        <p style="margin: 5px 0 0 0;">&copy; 2026 HireIQ. All rights reserved.</p>
-                    </div>
-                </div>
-                """, fullName, activationUrl, activationUrl, activationUrl);
-
             helper.setText(content, true);
             mailSender.send(mimeMessage);
-            log.info("Activation email successfully sent to {}", toEmail);
-            lastMailSuccess = "Successfully sent activation email to " + toEmail + " at " + new java.util.Date();
+            log.info("Activation email successfully sent to {} via SMTP", toEmail);
+            lastMailSuccess = "Successfully sent activation email via SMTP to " + toEmail + " at " + new java.util.Date();
         } catch (Exception e) {
-            log.error("Failed to construct or send activation email to {}: ", toEmail, e);
+            log.error("Failed to construct or send activation email via SMTP to {}: ", toEmail, e);
             java.io.StringWriter sw = new java.io.StringWriter();
             java.io.PrintWriter pw = new java.io.PrintWriter(sw);
             e.printStackTrace(pw);
-            lastMailError = "Error sending to " + toEmail + " at " + new java.util.Date() + "\n" +
+            lastMailError = "Error sending via SMTP to " + toEmail + " at " + new java.util.Date() + "\n" +
                             e.getClass().getName() + ": " + e.getMessage() + "\n" + sw.toString();
             log.warn("\n========================================================================\n" +
                      "DEVELOPMENT FALLBACK ACTIVATION LINK:\n" +
                      "For user: {}\n" +
                      "Activation Link: {}\n" +
                      "========================================================================\n", toEmail, activationUrl);
-            throw new RuntimeException("Failed to send activation email", e);
+            throw new RuntimeException("Failed to send activation email via SMTP", e);
         }
     }
 }
