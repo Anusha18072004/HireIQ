@@ -49,5 +49,6 @@ public class AuthDto {
         private String fullName;
         private String role;
         private String message;
+        private String activationToken;
     }
 }

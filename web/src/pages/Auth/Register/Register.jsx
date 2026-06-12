@@ -6,6 +6,7 @@ import Button from '../../../components/ui/Button/Button';
 import Alert from '../../../components/ui/Alert/Alert';
 import FormGroup from '../../../components/forms/FormGroup/FormGroup';
 import { validateEmail, validatePassword, validateRequired } from '../../../utils/validators';
+import axiosInstance from '../../../api/axiosInstance';
 import './Register.css';
 
 export const Register = () => {
@@ -16,6 +17,7 @@ export const Register = () => {
   const [fieldErrors, setFieldErrors] = useState({});
   const [submitError, setSubmitError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [activationToken, setActivationToken] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (field, value) => {
@@ -47,6 +49,9 @@ export const Register = () => {
     try {
       const res = await register(form.fullName, form.email, form.password, form.role);
       setSuccessMessage(res.message || 'Registration successful! Verification email sent.');
+      if (res.activationToken) {
+        setActivationToken(res.activationToken);
+      }
     } catch (err) {
       setSubmitError(err.message || 'Registration failed.');
     }
@@ -64,6 +69,21 @@ export const Register = () => {
           <Alert variant="success" style={{ margin: '1.25rem 0', lineHeight: '1.6' }}>
             {successMessage}
           </Alert>
+          {activationToken && (
+            <div style={{ marginTop: '1.25rem', padding: '1.25rem', backgroundColor: '#111E33', border: '1px solid #2E4268', borderRadius: '8px', textAlign: 'center' }}>
+              <p style={{ color: 'var(--text2)', fontSize: '0.88rem', margin: '0 0 0.85rem 0', lineHeight: '1.5' }}>
+                ⚠️ Render's hosting network blocks outgoing SMTP connections by default. If the activation email does not arrive in a few minutes, you can click below to activate your account directly for this demo:
+              </p>
+              <a 
+                href={`${axiosInstance.defaults.baseURL}/v1.0/activate?token=${activationToken}`}
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ display: 'inline-block', backgroundColor: '#E07B39', color: '#fff', padding: '10px 20px', borderRadius: '6px', textDecoration: 'none', fontWeight: '600', fontSize: '0.92rem', border: 'none', cursor: 'pointer' }}
+              >
+                Activate Account Instantly
+              </a>
+            </div>
+          )}
           <p style={{ color: 'var(--text2)', fontSize: '0.9rem', lineHeight: '1.6', textAlign: 'center', margin: '1.25rem 0' }}>
             Please make sure to check your spam/junk folder if you do not see the email in your inbox within a few minutes.
           </p>

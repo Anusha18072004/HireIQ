@@ -75,6 +75,7 @@ public class AuthService {
                 .fullName(user.getFullName())
                 .role(user.getRole().name())
                 .message("Registration successful! An activation link has been sent to your registered email address. Please check your inbox and click the link to verify your account before logging in.")
+                .activationToken(activationToken)
                 .build();
     }
 
