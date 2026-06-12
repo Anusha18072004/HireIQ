@@ -1,6 +1,9 @@
 package com.hireiq.controller;
 
+import com.hireiq.entity.User;
+import com.hireiq.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +25,27 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/debug")
 public class DebugController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/activate-all")
+    public ResponseEntity<?> activateAll() {
+        List<User> users = userRepository.findAll();
+        int count = 0;
+        for (User u : users) {
+            if (u.getIsActive() == null || !u.getIsActive()) {
+                u.setIsActive(true);
+                u.setActivationToken(null);
+                userRepository.save(u);
+                count++;
+            }
+        }
+        return ResponseEntity.ok(Map.of(
+                "message", "Successfully activated " + count + " users.",
+                "totalUsers", users.size()
+        ));
+    }
 
     @GetMapping("/auth")
     public ResponseEntity<?> debugAuth(
