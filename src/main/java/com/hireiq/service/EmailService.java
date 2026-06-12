@@ -16,14 +16,27 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
-    @Value("${app.base.url:http://localhost:8082}")
-    private String baseUrl;
+    @Value("${app.base.url:}")
+    private String configuredBaseUrl;
+
+    @Value("${RENDER_EXTERNAL_URL:http://localhost:8082}")
+    private String renderExternalUrl;
+
+    private String getBaseUrl() {
+        if (configuredBaseUrl != null && !configuredBaseUrl.isBlank() && !configuredBaseUrl.contains("localhost")) {
+            return configuredBaseUrl;
+        }
+        if (renderExternalUrl != null && !renderExternalUrl.isBlank() && !renderExternalUrl.contains("localhost")) {
+            return renderExternalUrl;
+        }
+        return "http://localhost:8082";
+    }
 
     @Value("${spring.mail.properties.mail.smtp.from:anusha.c1807@gmail.com}")
     private String fromEmail;
 
     public void sendActivationEmail(String toEmail, String fullName, String token) {
-        String activationUrl = baseUrl + "/api/v1.0/activate?token=" + token;
+        String activationUrl = getBaseUrl() + "/api/v1.0/activate?token=" + token;
         
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {

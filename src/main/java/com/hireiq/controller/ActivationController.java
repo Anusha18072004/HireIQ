@@ -16,8 +16,21 @@ public class ActivationController {
 
     private final AuthService authService;
 
-    @Value("${app.frontend.url:http://localhost:3000}")
-    private String frontendUrl;
+    @Value("${app.frontend.url:}")
+    private String configuredFrontendUrl;
+
+    @Value("${RENDER:false}")
+    private String isRender;
+
+    private String getFrontendUrl() {
+        if (configuredFrontendUrl != null && !configuredFrontendUrl.isBlank() && !configuredFrontendUrl.contains("localhost")) {
+            return configuredFrontendUrl;
+        }
+        if ("true".equalsIgnoreCase(isRender)) {
+            return "https://hire-iq-psi.vercel.app";
+        }
+        return "http://localhost:3000";
+    }
 
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     @Operation(summary = "Activate a user account", description = "Exposes a GET /api/v1.0/activate endpoint to activate user account via token.")
@@ -88,7 +101,7 @@ public class ActivationController {
                 </body>
                 </html>
                 """;
-            return html.replace("http://localhost:3000", frontendUrl);
+            return html.replace("http://localhost:3000", getFrontendUrl());
         } catch (IllegalArgumentException e) {
             String html = """
                 <!DOCTYPE html>
@@ -154,7 +167,7 @@ public class ActivationController {
                 </body>
                 </html>
                 """;
-            return html.replace("http://localhost:3000", frontendUrl)
+            return html.replace("http://localhost:3000", getFrontendUrl())
                        .replace("%s", e.getMessage());
         }
     }
