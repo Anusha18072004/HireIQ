@@ -29,6 +29,14 @@ public class DebugController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/mail-status")
+    public ResponseEntity<?> mailStatus() {
+        return ResponseEntity.ok(Map.of(
+                "lastMailError", com.hireiq.service.EmailService.lastMailError,
+                "lastMailSuccess", com.hireiq.service.EmailService.lastMailSuccess
+        ));
+    }
+
     @GetMapping("/activate-all")
     public ResponseEntity<?> activateAll() {
         List<User> users = userRepository.findAll();

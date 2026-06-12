@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class EmailService {
 
+    public static volatile String lastMailError = "No errors logged yet";
+    public static volatile String lastMailSuccess = "No successful emails sent yet";
+
     private final JavaMailSender mailSender;
 
     @Value("${app.base.url:}")
@@ -81,8 +84,14 @@ public class EmailService {
             helper.setText(content, true);
             mailSender.send(mimeMessage);
             log.info("Activation email successfully sent to {}", toEmail);
+            lastMailSuccess = "Successfully sent activation email to " + toEmail + " at " + new java.util.Date();
         } catch (Exception e) {
             log.error("Failed to construct or send activation email to {}: ", toEmail, e);
+            java.io.StringWriter sw = new java.io.StringWriter();
+            java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+            e.printStackTrace(pw);
+            lastMailError = "Error sending to " + toEmail + " at " + new java.util.Date() + "\n" +
+                            e.getClass().getName() + ": " + e.getMessage() + "\n" + sw.toString();
             log.warn("\n========================================================================\n" +
                      "DEVELOPMENT FALLBACK ACTIVATION LINK:\n" +
                      "For user: {}\n" +
