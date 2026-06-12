@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const getBaseURL = () => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    return import.meta.env.VITE_API_BASE_URL;
+  let url = import.meta.env.VITE_API_BASE_URL;
+  if (url) {
+    return url.endsWith('/api') ? url : `${url}/api`;
   }
   // Auto-fallback to Render backend if running on Vercel
   if (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
-    return 'https://hireiq-backend-unfk.onrender.com';
+    return 'https://hireiq-backend-unfk.onrender.com/api';
   }
   return '/api';
 };
