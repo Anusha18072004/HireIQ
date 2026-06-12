@@ -7,10 +7,10 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn package -DskipTests -B
 
-# Run stage using OpenJDK 17-slim
-FROM openjdk:17-jdk-slim
+# Run stage using Eclipse Temurin 17 JRE
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/hireiq-0.0.1-SNAPSHOT.jar hireiq.jar
 # Expose the port configured in application.properties
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "hireiq.jar"]
+ENTRYPOINT ["java","-jar","hireiq.jar"]
