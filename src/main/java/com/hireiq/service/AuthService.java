@@ -56,7 +56,7 @@ public class AuthService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole() != null ? request.getRole() : User.Role.CANDIDATE)
-                .isActive(false)
+                .isActive(true)
                 .activationToken(activationToken)
                 .build();
 

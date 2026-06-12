@@ -4,6 +4,7 @@ import com.hireiq.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +16,15 @@ public class ActivationController {
 
     private final AuthService authService;
 
+    @Value("${app.frontend.url:http://localhost:3000}")
+    private String frontendUrl;
+
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     @Operation(summary = "Activate a user account", description = "Exposes a GET /api/v1.0/activate endpoint to activate user account via token.")
     public String activate(@RequestParam("token") String token) {
         try {
             authService.activateUser(token);
-            return """
+            String html = """
                 <!DOCTYPE html>
                 <html>
                 <head>
@@ -84,8 +88,9 @@ public class ActivationController {
                 </body>
                 </html>
                 """;
+            return html.replace("http://localhost:3000", frontendUrl);
         } catch (IllegalArgumentException e) {
-            return String.format("""
+            String html = """
                 <!DOCTYPE html>
                 <html>
                 <head>
@@ -148,7 +153,9 @@ public class ActivationController {
                     </div>
                 </body>
                 </html>
-                """, e.getMessage());
+                """;
+            return html.replace("http://localhost:3000", frontendUrl)
+                       .replace("%s", e.getMessage());
         }
     }
 }

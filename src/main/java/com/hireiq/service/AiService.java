@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hireiq.entity.TestQuestion;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
@@ -241,10 +243,8 @@ public class AiService {
                 }
 
                 Rules:
-                1. KNOCKOUT QUESTIONS:
-                   - If the "Knockout Questions" section in the job profile details below is empty, is "None", has no questions, or is "[]", you MUST set "knockoutPass" to true and "failedKnockoutQuestion" to "". Do NOT treat general job requirements (such as experience years, work mode, or required skills) as knockout questions unless they are explicitly listed in the "Knockout Questions" section.
-                   - If knockout questions are listed, evaluate them carefully against the candidate's actual qualifications in their profile. A knockout question specifies criteria that are mandatory.
-                   - Be extremely strict: do NOT assume or guess qualifications. If a knockout question asks for hands-on experience with a specific technology (e.g. Terraform, Kubernetes, React) or a specific degree, and that technology/degree is not explicitly mentioned anywhere in the candidate's profile, skills, experiences, or projects, you MUST assume the candidate does NOT satisfy the condition and fail the knockout question (set "knockoutPass" to false and "failedKnockoutQuestion" to the text of the question).
+                1. KNOCKOUT QUESTIONS: If the Job has knockout questions listed (JSON format or text), evaluate them carefully against the candidate's actual qualifications in the profile.
+                   - A knockout question specifies criteria that are mandatory.
                    - If the candidate clearly fails ANY knockout question, you MUST set "knockoutPass" to false, "failedKnockoutQuestion" to the text of the failed question, and "matchScore" to 0.
                    - If there are no knockout questions, or the candidate passes all of them, set "knockoutPass" to true and "failedKnockoutQuestion" to "".
                 
@@ -279,16 +279,10 @@ public class AiService {
             String cleaned = cleanJson(response);
             JsonNode node = objectMapper.readTree(cleaned);
 
-            boolean knockoutPass = node.path("knockoutPass").asBoolean(true);
-            int score = node.path("matchScore").asInt(0);
-            if (!knockoutPass) {
-                score = 0;
-            }
-
             return new MatchResult(
-                    score,
+                    node.path("matchScore").asInt(0),
                     text(node, "reason"),
-                    knockoutPass,
+                    node.path("knockoutPass").asBoolean(true),
                     text(node, "failedKnockoutQuestion"),
                     node.path("skillsScore").asInt(0),
                     node.path("experienceScore").asInt(0),
@@ -626,7 +620,7 @@ public class AiService {
     // ── 6. TEST FEEDBACK GENERATOR ────────────────────────────
     public TestFeedback generateTestFeedback(List<com.hireiq.entity.TestQuestion> questions, String jobTitle) {
         StringBuilder questionsList = new StringBuilder();
-        for (com.hireiq.entity.TestQuestion q : questions) {
+        for (TestQuestion q : questions) {
             questionsList.append(String.format("Question: %s\nCorrect Answer: %s\nCandidate Answer: %s\nResult: %s\n\n",
                     q.getQuestion(),
                     q.getCorrectAnswer(),
